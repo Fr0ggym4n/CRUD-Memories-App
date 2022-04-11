@@ -1,4 +1,4 @@
-import { FETCH_ALL, FETCH_BY_SEARCH, FETCH_POST, START_LOADING, END_LOADING, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
+import { FETCH_ALL, FETCH_BY_SEARCH, FETCH_POST, START_LOADING, END_LOADING, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 // Action Creators
@@ -38,12 +38,14 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
    }
 };
 
-export const createPost = (post) => async (dispatch) => {
+export const createPost = (post, history) => async (dispatch) => {
    try {
       dispatch({ type: START_LOADING });
       const { data } = await api.createPost(post);
 
       dispatch({ type: CREATE, payload: data });
+
+      history.push(`/posts/${data._id}`);
       dispatch({ type: END_LOADING });
    } catch (error) {
       console.log(error);
@@ -72,10 +74,11 @@ export const deletePost = (id) => async (dispatch) => {
 
 
 export const likePost = (id) => async (dispatch) => {
+   const user = JSON.parse(localStorage.getItem('profile'));
+   
    try {
-      const { data } = await api.likeCount(id);
-
-      dispatch({ type: UPDATE, payload: data });
+      const { data } = await api.likePost(id, user?.token);
+      dispatch({ type: LIKE, payload: data });
    } catch (error) {
       console.log(error);
    }
