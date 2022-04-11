@@ -1,6 +1,7 @@
 import express from 'express';
 
 import { 
+    getPost,
     getPostsBySearch,
     getPosts,
     createPost,
@@ -12,8 +13,13 @@ import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
-// CRUD routes for posts
+// route for search
 router.get('/search', getPostsBySearch);
+
+// route to get single post
+router.get('/:id', getPost);
+
+// CRUD routes for posts
 router.get('/', getPosts);
 router.post('/', auth, createPost);
 router.patch('/:id', auth, updatePost);
