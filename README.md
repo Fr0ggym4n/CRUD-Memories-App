@@ -11,3 +11,5 @@ This app was a social media like, based on import some photo, like and login/log
 - `Make sure to have node & npm installed on you're machine`
 
 - run `npm i && npm start` for both client and server side to start the app
+
+Work in Progress....
