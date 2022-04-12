@@ -7,7 +7,8 @@ import {
     createPost,
     updatePost,
     deletePost,
-    likePost
+    likePost,
+    commentPost
 } from '../controllers/posts.js';
 import auth from '../middleware/auth.js';
 
@@ -27,6 +28,7 @@ router.delete('/:id', auth, deletePost);
 
 // Routes for like button
 router.patch('/:id/likePost', auth, likePost);
+router.post('/:id/commentPost', commentPost);
 
 
 export default router;

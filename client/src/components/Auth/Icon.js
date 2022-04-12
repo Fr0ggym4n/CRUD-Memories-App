@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Icon = () => {
+const icon = () => {
     return (
         <svg style={{ width: '20px', height: '20px' }} viewBox="0 0 24 24">
             <path
@@ -11,4 +11,4 @@ const Icon = () => {
     )
 }
 
-export default Icon
+export default icon;
