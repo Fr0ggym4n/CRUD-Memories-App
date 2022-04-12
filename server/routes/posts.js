@@ -9,8 +9,8 @@ import {
     deletePost,
     likePost,
     commentPost
-} from '../controllers/posts.js';
-import auth from '../middleware/auth.js';
+} from '../controllers/posts';
+import auth from '../middleware/auth';
 
 const router = express.Router();
 
