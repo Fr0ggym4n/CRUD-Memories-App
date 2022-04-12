@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 
 import { 
     getPost,
@@ -9,8 +9,8 @@ import {
     deletePost,
     likePost,
     commentPost
-} from '../controllers/posts';
-import auth from '../middleware/auth';
+} from "../controllers/posts.js";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
