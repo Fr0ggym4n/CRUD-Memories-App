@@ -10,6 +10,10 @@ import userRoutes from './routes/users.js';
 const app = express();
 dotenv.config();
 
+app.get('/', (req, res) => {
+    res.send('APP is running!');
+});
+
 app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
